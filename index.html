@@ -59,7 +59,7 @@
                         <button class="nav-save-btn">Save</button>
                     </div>
                 </div>
-
+                <!--others nav ite-->
                 <a href="#" class="nav-item">Trip Boards</a>
                 <a href="#" class="nav-item">List your property</a>
                 <a href="#" class="nav-item">Help</a>
@@ -80,8 +80,43 @@
             <div class="banner-head">
                 <a href="#" class="banner-head-item-1"><i class="fa-solid fa-arrow-left"></i>See all property</a>
                 <div class="banner-head-item-2">
-                    <a href="#" class="banner-head-item banner-share"> <i
-                            class="fa-solid fa-arrow-up-from-bracket"></i><span>Share</span></a>
+                    <a href="#" class="banner-head-item banner-share">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        <span>Share</span>
+                      </a>
+                      
+                      <!--share modal-->
+                      <div class="share-popup hidden">
+                        <div class="share-content">
+                          <img src="images/img1.jpg" alt="Juneau Vacation Home" class="share-image">
+                          <div class="share-info">
+                            <h3>Juneau Vacation Home: Stunning View + Beach Access</h3>
+                            <p>United States of America</p>
+                            <p>9.8/10</p>
+                          </div>
+                        </div>
+                        <div class="share-options">
+                          <a href="#" class="share-option" data-share="messages">
+                            <i class="fa-brands fa-facebook-messenger"></i>
+                            <span>Messenger</span>
+                          </a>
+                          <a href="#" class="share-option" data-share="whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                          </a>
+                          <a href="#" class="share-option" data-share="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <span>Facebook</span>
+                          </a>
+                          <a href="#" class="share-option copy-link">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>Copy link</span>
+                          </a>
+                        </div>
+                        <div class="share-popup-close">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                      </div>
                     <a href="#" class="banner-head-item banner-save"><i
                             class="fa-regular fa-heart"></i><span>Save</span>
                     </a>
@@ -105,7 +140,7 @@
                 </div>
                 <div class="gallery-item">
                     <img src="images/img2.jpg" alt=" Living room">
-                    <div class="photo-count"><i class="fa-regular fa-image"></i>30+</div>
+                    <div class="photo-count1"><i class="fa-regular fa-image"></i>30+</div>
                 </div>
 
                 <!-- Mobile view dots -->
@@ -117,6 +152,17 @@
                     <span class="dot"></span>
                 </div>
             </div>
+            <div id="gallery-popup" class="gallery-popup">
+                <div class="gallery-popup-content">
+                  <span class="close-button">&times;</span>
+                  <div class="gallery-navigation">
+                    <button class="previous-button" disabled>Previous</button>
+                    <span class="photo-count">1/31</span>
+                    <button class="next-button">Next</button>
+                  </div>
+                  <img id="gallery-image" src="images/img1.jpg" alt="Lake view deck">
+                </div>
+              </div>
             <div>
 
             </div>
@@ -265,9 +311,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="grid-column: span 2;" class="travelers-sec">
-                                <label>Travelers</label>
-                                <div>2 travelers</div>
+                            <div class="preview-container">
+                                <div class="travelers-sec">
+                                    <label>Travelers</label>
+                                    <div class="travelers-count">2 travelers</div>
+                                    
+                                    <div class="travelers-popup">
+                                        <div class="traveler-type">
+                                            <div class="traveler-info">
+                                                <h3>Adults</h3>
+                                            </div>
+                                            <div class="counter">
+                                                <button class="decrease" data-type="adults" disabled>−</button>
+                                                <span>2</span>
+                                                <button class="increase" data-type="adults">+</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="traveler-type">
+                                            <div class="traveler-info">
+                                                <h3>Children</h3>
+                                                <p>Ages 0 to 17</p>
+                                            </div>
+                                            <div class="counter">
+                                                <button class="decrease" data-type="children" disabled>−</button>
+                                                <span>0</span>
+                                                <button class="increase" data-type="children">+</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <label class="pets-checkbox">
+                                            <input type="checkbox"> I am traveling with pets
+                                        </label>
+                                        
+                                        <button class="done-btn">Done</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -462,7 +541,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                         <div>
-                            <h5>Ask a question</p>
+                            <h5>Ask a question</h5>
                                 <input type="text" class="search-input" placeholder="Is there free parking?"
                                     value="Is there free parking?">
                         </div>

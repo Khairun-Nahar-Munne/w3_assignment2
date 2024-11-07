@@ -230,7 +230,75 @@ header nav {
     display: flex;
     gap: 0.5rem;
 
+
 }
+
+/*share modal*/
+.share-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    z-index: 100;
+    width: 400px;
+  }
+  
+  .share-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .share-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 16px;
+  }
+  
+  .share-info h3 {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+  
+  .share-info p {
+    margin: 4px 0;
+  }
+  
+  .share-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+  }
+  
+  .share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .share-option i {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .share-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+  }
+  
+  .hidden {
+    display: none;
+  }
 
 .banner-save {
     display: flex;
@@ -270,6 +338,21 @@ header nav {
     /* Allows .photo-count to be positioned absolutely within this item */
 }
 
+.photo-count1 {
+    position: absolute;
+    bottom: 8px;
+    /* Adjust these values to control the positioning */
+    right: 8px;
+    background: rgba(0, 0, 0, 0.599);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .photo-count {
     position: absolute;
     bottom: 8px;
@@ -284,6 +367,70 @@ header nav {
     align-items: center;
     gap: 0.5rem;
 }
+.gallery-popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .gallery-popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+  }
+  
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .gallery-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .previous-button,
+  .next-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .previous-button:disabled,
+  .next-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  #gallery-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+  }
 
 /*Information*/
 .info-nav {
@@ -386,7 +533,7 @@ header nav {
 }
 
 .map-div {
-    max-width: 1200px;
+    max-width: 100%;
     margin-bottom: 70px;
     padding: 20px 0px;
     display: flex;
@@ -394,7 +541,7 @@ header nav {
 }
 
 .map-card {
-    width: 400px;
+    width: 50%;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -594,11 +741,147 @@ header nav {
     gap: 10px;
     margin: 15px 0;
 }
-.travelers-sec{
-    margin-top: 5px;
-    align-items: center;
+.preview-container {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.travelers-sec {
+    position: relative;
+    cursor: pointer;
+    padding: 12px;
     border: 1px solid #ddd;
-    padding: 10px;
+    border-radius: 4px;
+    background: white;
+}
+
+.travelers-sec label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.travelers-count {
+    font-size: 16px;
+    color: #333;
+}
+
+.travelers-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 16px;
+    z-index: 1000;
+}
+
+.travelers-popup.active {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.traveler-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 8px 0;
+}
+
+.traveler-info {
+    flex: 1;
+}
+
+.traveler-type h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.traveler-type p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.counter button {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid #ddd;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #333;
+    transition: all 0.2s;
+}
+
+.counter button:hover:not(:disabled) {
+    background: #f5f7fa;
+    border-color: #ccc;
+}
+
+.counter button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+}
+
+.counter span {
+    min-width: 24px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.pets-checkbox {
+    margin-top: 16px;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.done-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 16px;
+}
+
+.done-btn:hover {
+    background: #0052cc;
 }
 .date-travelers div {
     
@@ -770,6 +1053,7 @@ header nav {
     margin-right: 10px;
     font-size: 18px;
 }
+  
 
 .room-details-link {
     color: #006CE6;
@@ -1517,11 +1801,22 @@ header nav {
         opacity: 0.5;
     }
 
-    .photo-count {
+    .photo-count1 {
 
         background: rgba(0, 0, 0, 0.358);
 
     }
+    .gallery-popup {
+      
+        z-index: 14
+     
+      }
+      
+      .gallery-popup-content {
+        z-index: 14
+     
+        
+      }
 
     .dot.active {
         opacity: 1;
@@ -1534,7 +1829,7 @@ header nav {
         right: 20px;
         z-index: 10;
     }
-
+  
     .btn {
         background: white;
     }
@@ -1568,6 +1863,9 @@ header nav {
         flex-direction: column;
         padding: 0px;
         margin-bottom: 0px;
+    }
+    .map-card{
+        width: 100%;
     }
 
     .map-container {
