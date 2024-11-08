@@ -27,7 +27,7 @@ A modern, responsive vacation rental property website showcasing a stunning beac
 
 ## Tools
 
-The following tools help make easier to work with sample code.
+The following tools help make easier to work with code.
 
 - [git](https://git-scm.com/downloads): A tool for managing source code
 - [Visual Studio Code](https://code.visualstudio.com/): A source code editor
@@ -63,7 +63,7 @@ To run the website locally or contribute to the project, follow these steps:
 ### Clone the Repository
 
 ```bash
-- git clone https://github.com/your-username/html-css-project.git 
+- git clone https://github.com/Khairun-Nahar-Munne/w3_assignment2.git
 - cd property-details-website 
 ```
 
@@ -78,7 +78,7 @@ Contributions are welcome! Here's how you can contribute:
 ### Fork the Repository
 ```bash
 - git clone https://github.com/Khairun-Nahar-Munne/w3_assignment2.git
-- cd property-details-website
+- cd w3_assignment2
 ```
 ### Create a New Branch
 
