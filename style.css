@@ -1190,7 +1190,7 @@ header nav {
     margin-bottom: 20px;
 }
 
-.question-section h1 {
+.question-section h2 {
     font-size: 24px;
     display: flex;
     justify-content: space-between;
@@ -1357,96 +1357,77 @@ header nav {
 
 /* timeline bar*/
 
+.cancellation-content {
+    flex: 1;
+}
+.timeline-card{
+    display: none;
+}
 .timeline-container {
+    width: 60%;
+    background-color: #E7FAFB;
+    padding: 2rem 3rem;
     border-radius: 12px;
-}
-
-.timeline-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: #f3f4f6;
-}
-
-.today {
-    margin-top: -10px;
+    margin: 2rem auto;
 }
 
 .timeline {
-    display: flex;
-    align-items: center;
-    padding: 20px 30px;
-  
-    width: 400px;
-    justify-content: space-between;
-}
-
-.marker {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
-}
-
-.circle {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #d1d5db;
-    border: 2px solid #d1d5db;
-    margin-top: 30px;
-}
-
-.circle.filled {
-    background-color: #1f2937;
-    border-color: #1f2937;
-}
-
-.label {
-    font-size: 12px;
-    color: #374151;
-}
-
-.line {
     position: relative;
     height: 2px;
-    background-color: #d1d5db;
-    width: 1100px;
+    background: #ddd;
+    margin: 2rem 0;
 }
 
-.line.full-refund::before,
-.line.no-refund::before {
-    content: attr(data-label);
-
-    align-items: center;
+.timeline-point {
     position: absolute;
-    top: -20px;
-    font-size: 12px;
-    color: #374151;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.line.full-refund::before {
-    content: "Full refund";
-    left: -10px;
-    padding-left: 50px;
+.timeline-point.filled {
+    width: 12px;
+    height: 12px;
+    background: #1a1a1a;
+    border-radius: 50%;
 }
 
-.line.no-refund::before {
-    content: "No refund";
-    right: -10px;
-    padding-right: 50px;
+.timeline-point.empty {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #1a1a1a;
+    border-radius: 50%;
+    background: white;
 }
 
+.timeline-point:nth-child(1) { left: 0; }
+.timeline-point:nth-child(2) { left: 50%; }
+.timeline-point:nth-child(3) { right: 0; }
+
+.timeline-labels {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.timeline-label {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+}
+
+.upper-labels{
+    display: flex;
+    align-items: center; justify-content: space-around;
+}
 .refund-details {
     margin-top: 40px;
+    gap:20px;
     display: grid;
    
 }
 
 .refund-period {
-    padding: 20px 20px;
+    padding: 20px 0px;
    
     display: flex;
     gap: 40px;
@@ -1760,7 +1741,7 @@ header nav {
         aspect-ratio: 16/9;
     }
 
-    .gallery-item-last {
+    .gallery-item-invisible{
         display: none;
     }
 
@@ -1981,49 +1962,94 @@ header nav {
     }
 
     /* rulse section*/
-    .timeline {
-        flex-direction: column;
-        width: auto;
+    .timeline-container{
+        display: none;
+    }
+
+   .timeline-card{
+        display: grid;
+    }
+
+    .timeline-card {
+        display: flex;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
         padding: 20px;
+        width: 100%;
+        position: relative;
+        background-color: #E7FAFB;
+        border-radius: 8px;
+        margin: 10px auto;
     }
-
-    .marker {
-        flex-direction: row;
-        justify-content: flex-start;
-        margin-bottom: 0px;
-        margin-left: 45px;
+    
+    /* Left and right label sections */
+    .left-labels {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        gap: 50px;
     }
-
-    .circle {
-        margin-top: 0px;
-        margin-right: 10px;
-        margin-bottom: 0;
+    
+    .right-labels {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 65px;
+        padding: 0;
+        margin-right: auto;
+        padding-right: 30px;
     }
-
+    
+    
+    /* Labels styling */
+    .label {
+        font-size: 12px;
+        padding: 8px;
+    }
+    
+    /* Vertical line with circles */
     .line {
+        position: relative;
         width: 2px;
-        height: 50px;
-        margin: 0 auto;
+        background-color: #333;
+        height: 200px; /* Adjust height as needed */
+        margin: 0 20px; /* Space between line and labels */
+    }
+    
+    /* Circles styling */
+    .circle {
+        width: 10px;
+        height: 10px;
+        
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    
+    /* Circle positions */
+    .top-circle {
+        top: 0;
+        background-color: black;
+    }
+    
+    .middle-circle {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 2px solid black;
+    }
+    
+    .bottom-circle {
+        bottom: 0;
+        background-color: white;
+        border: 2px solid black;
     }
 
-    .checkin {
-        margin-left: 60px;
-    }
-
-    .line.no-refund::before {
-        margin-top: 40px;
-        transform: translateY(-50%);
-    }
-
-    .line.full-refund::before {
-        margin-top: 40px;
-        margin-left: -130px;
-        transform: translateY(-50%);
-    }
-
-    .check-times {
-        gap: 60px;
-    }
 
     /*main-footer-banner section*/
     .footer-reviews-container {

@@ -21,4 +21,17 @@ Follow this step to clone the project.
 ```bash
  git clone https://github.com/Khairun-Nahar-Munne/w3-assignment1.git
 ```
-    
+
+## Project Structure
+.
+└── index.html
+└── images
+    └── img1.jpg
+    └── img2.jpg
+    └── img3.jpg
+    └── img4.jpg
+    └── img5.jpg
+    └── img7.png
+└── script.js
+└── styles.css
+└── README.md
