@@ -45,48 +45,39 @@ const regionNames = {
   DE: "Germany",
 };
 
-// Update currency based on region selection
+//for interactive region
 regionSelect.addEventListener("change", (e) => {
   const selectedRegion = e.target.value;
   const currency = regionCurrencyMap[selectedRegion];
   currencySelect.value = currency;
 });
 
-// Show modal when globe icon is clicked
 globeIcon.addEventListener("click", (e) => {
   e.preventDefault();
   modal.style.display = "block";
 });
 
-// Close modal when close button is clicked
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// Close modal when clicking outside
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.style.display = "none";
   }
 });
-
-// Handle save button click
 saveBtn.addEventListener("click", () => {
   const selectedRegion = regionSelect.value;
   const selectedCurrency = currencySelect.value;
 
-  // Update the globe icon text
   globeIcon.innerHTML = `${regionNames[selectedRegion]}`;
 
-  // Log the selected values
   console.log("Selected Region:", selectedRegion);
   console.log("Selected Currency:", selectedCurrency);
 
-  // Close the modal
   modal.style.display = "none";
 });
 
-// Set initial currency based on default region
 window.addEventListener("DOMContentLoaded", () => {
   const initialRegion = regionSelect.value;
   currencySelect.value = regionCurrencyMap[initialRegion];
@@ -100,21 +91,18 @@ document.addEventListener("DOMContentLoaded", function () {
     children: 0,
   };
 
-  // Toggle popup
   travelersSection.addEventListener("click", function (e) {
     if (!popup.contains(e.target) || e.target === doneBtn) {
       popup.classList.toggle("active");
     }
   });
 
-  // Close popup when clicking outside
   document.addEventListener("click", function (e) {
     if (!travelersSection.contains(e.target)) {
       popup.classList.remove("active");
     }
   });
 
-  // Handle counter buttons
   popup.addEventListener("click", function (e) {
     if (e.target.matches("button.increase, button.decrease")) {
       const type = e.target.dataset.type;
@@ -129,13 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
         counts[type]--;
       }
 
-      // Update counter display
       countSpan.textContent = counts[type];
 
-      // Disable decrease button if count is 0
       decreaseBtn.disabled = counts[type] === 0;
 
-      // Update total travelers count
       const total = counts.adults + counts.children;
       travelersCount.textContent = `${total} traveler${total !== 1 ? "s" : ""}`;
     }
@@ -153,7 +138,6 @@ const images = [
   "images/img8.jpg",
 ];
 
-// Array of titles corresponding to each image
 const titles = [
   "Juneau Vacation Rental | 2BR | 1BA | 1,115 Sq Ft | Stairs Required",
   "Cozy Bedroom with Lake View",
@@ -161,7 +145,6 @@ const titles = [
   "Modern Living Room",
   "Stunning Exterior View",
   "Beautiful Living Room with Modern Amenities",
- 
 ];
 
 let currentIndex = 0;
@@ -176,21 +159,16 @@ function closeGalleryPopup() {
 }
 
 function updateGallery() {
-  // Update image
   galleryImage.src = images[currentIndex];
 
-  // Update photo count
   photoCount.textContent = `${currentIndex + 1}/${images.length}`;
 
-  // Update title
   galleryTitle.textContent = titles[currentIndex];
 
-  // Update navigation buttons
   previousButton.disabled = currentIndex === 0;
   nextButton.disabled = currentIndex === images.length - 1;
 }
 
-// Attach event listeners
 document.querySelectorAll(".gallery-item").forEach((item, index) => {
   item.addEventListener("click", () => {
     currentIndex = index;
@@ -214,14 +192,12 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// Close popup when clicking outside the content
 galleryPopup.addEventListener("click", (e) => {
   if (e.target === galleryPopup) {
     closeGalleryPopup();
   }
 });
 
-// Add keyboard navigation
 document.addEventListener("keydown", (e) => {
   if (galleryPopup.style.display === "block") {
     if (e.key === "ArrowLeft" && currentIndex > 0) {
@@ -238,9 +214,7 @@ document.addEventListener("keydown", (e) => {
 
 //hearticon change
 
-// Function to set the heart icon state
 function setHeartIconState() {
-  // Check if the heart icon was previously set to red
   const heartIconColor = localStorage.getItem("heartIconColor");
   if (heartIconColor === "red") {
     heartIcon.classList.add("fa-solid");
@@ -253,9 +227,7 @@ function setHeartIconState() {
   }
 }
 
-// Add click event listener to the heart icon
 heartIcon.addEventListener("click", function () {
-  // Toggle the heart icon between regular and solid states
   if (heartIcon.classList.contains("fa-regular")) {
     heartIcon.classList.add("fa-solid");
     heartIcon.classList.remove("fa-regular");
@@ -269,7 +241,6 @@ heartIcon.addEventListener("click", function () {
   }
 });
 
-// Set the initial heart icon state
 setHeartIconState();
 
 //for interative share icon
@@ -306,13 +277,10 @@ copyLinkButton.addEventListener("click", () => {
 function shareContent(shareType) {
   switch (shareType) {
     case "messages":
-      // Implement Messenger sharing logic
       break;
     case "whatsapp":
-      // Implement WhatsApp sharing logic
       break;
     case "facebook":
-      // Implement Facebook sharing logic
       break;
     default:
       break;

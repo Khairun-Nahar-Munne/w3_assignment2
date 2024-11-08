@@ -19,7 +19,7 @@ A modern, responsive vacation rental property website showcasing a stunning beac
 - Footer: Includes information about the host, languages, and a button to contact the host.
 - Responsive: for both mobile and desktop
 
-## Technolofy Stack
+## Technology Stack
 
 - HTML
 - Vanilla CSS
